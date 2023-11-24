@@ -18,6 +18,15 @@ function App() {
     setNotes(data);
   }
 
+  async function createNote() {
+    await fetch("/notes", {
+      method: "POST",
+      body: JSON.stringify({ title: "Nouvelle note", content: "" }),
+      headers: { "Content-type": "application/json" },
+    });
+    fetchNotes();
+  }
+
   useEffect(function () {
     fetchNotes();
   }, []);
@@ -25,17 +34,22 @@ function App() {
   return (
     <BrowserRouter>
       <aside className="Side">
-        {notes !== null ? (
-          <ol className="Notes-list">
-            {notes.map((note) => (
-              <li>
-                <Link className="Note-link" to={`/notes/${note.id}`}>
-                  {note.title}
-                </Link>
-              </li>
-            ))}
-          </ol>
-        ) : null}
+        <div>
+          <button className="Button Button-create-note" onClick={createNote}>
+            +
+          </button>
+          {notes !== null ? (
+            <ol className="Notes-list">
+              {notes.map((note) => (
+                <li>
+                  <Link className="Note-link" to={`/notes/${note.id}`}>
+                    {note.title}
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          ) : null}
+        </div>
       </aside>
       <main className="Main"></main>
     </BrowserRouter>
