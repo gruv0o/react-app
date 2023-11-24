@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 import "./App.css";
 
@@ -22,22 +23,22 @@ function App() {
   }, []);
 
   return (
-    <>
+    <BrowserRouter>
       <aside className="Side">
         {notes !== null ? (
           <ol className="Notes-list">
             {notes.map((note) => (
               <li>
-                <a className="Note-link" href={`/notes/${note.id}`}>
+                <Link className="Note-link" to={`/notes/${note.id}`}>
                   {note.title}
-                </a>
+                </Link>
               </li>
             ))}
           </ol>
         ) : null}
       </aside>
       <main className="Main"></main>
-    </>
+    </BrowserRouter>
   );
 }
 
