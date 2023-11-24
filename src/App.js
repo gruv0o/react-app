@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
 
 import "./App.css";
 import Note from "./components/Note";
@@ -56,6 +56,8 @@ function App() {
         <Routes>
           <Route path="/" element="Sélectionner une note" />
           <Route path="/notes/:id" element={<Note />} />
+
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
     </BrowserRouter>
