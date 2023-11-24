@@ -13,7 +13,7 @@ function App() {
   const [notes, setNotes] = useState(null);
 
   async function fetchNotes() {
-    const response = await fetch("/notes");
+    const response = await fetch("/notes?_sort=id&_order=desc");
     const data = await response.json();
     setNotes(data);
   }
