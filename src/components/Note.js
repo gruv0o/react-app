@@ -3,20 +3,18 @@ import { useEffect, useState } from "react";
 
 import "./Note.css";
 
-function Note() {
+function Note({ onSaveSuccess }) {
 const { id } = useParams();
 const [note, setNote] = useState(null);
 
 async function fetchNote(){
-  const response = await fetch('/notes/'+id);
+  const response = await fetch(`/notes/${id}`); // Alt + 96 pour `
   const data = await response.json();
   setNote(data);
 }
 
-
-
 async function saveNote(){
-  const response = await fetch('/notes/'+id, {
+  const response = await fetch(`/notes/${id}`, {
     method: "PUT",
     body: JSON.stringify(note),
     headers: {"Content-Type":"application/json" },
@@ -25,9 +23,7 @@ async function saveNote(){
 }
 
 useEffect(() =>{
-
-  fetchNote();
-
+fetchNote();
 },[id]);
 
 if(!note){
@@ -37,27 +33,19 @@ if(!note){
 
   return (
     <form className="Form" 
-    onSubmit=
-    {(event) => 
-      {
-        event.preventDefault();
-        saveNote();
-      }}
-    >
-      <input className="Note-editable Note-title" 
+    onSubmit={(event) => {event.preventDefault();  saveNote();}}>
+      <input 
+      className="Note-editable Note-title" 
       type="text" 
       value={note.title}
       onChange={(event) => {
-        console.log(event.target.value);
         setNote({...note, title: event.target.value});
       }}
-
       />
       <textarea 
       className="Note-editable Note-content"
       value={note.content}
       onChange={(event) => {
-        console.log(event.target.value);
         setNote({...note,content: event.target.value});
       }}
       />
