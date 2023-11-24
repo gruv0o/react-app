@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 import "./App.css";
+import Note from "./components/Note";
 
 // CYCLE DE VIE du composant App :
 // 1. rendu initial (avec les valeurs d'état initiales)
@@ -51,7 +52,12 @@ function App() {
           ) : null}
         </div>
       </aside>
-      <main className="Main"></main>
+      <main className="Main">
+        <Routes>
+          <Route path="/" element="Sélectionner une note" />
+          <Route path="/notes/:id" element={<Note />} />
+        </Routes>
+      </main>
     </BrowserRouter>
   );
 }
