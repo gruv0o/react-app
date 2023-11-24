@@ -14,7 +14,7 @@ function App() {
   async function fetchNotes() {
     const response = await fetch("/notes");
     const data = await response.json();
-    console.log(data);
+    setNotes(data);
   }
 
   useEffect(function () {
@@ -24,7 +24,17 @@ function App() {
   return (
     <>
       <aside className="Side">
-        {notes !== null ? notes.map((note) => <div></div>) : null}
+        {notes !== null ? (
+          <ol className="Notes-list">
+            {notes.map((note) => (
+              <li>
+                <a className="Note-link" href={`/notes/${note.id}`}>
+                  {note.title}
+                </a>
+              </li>
+            ))}
+          </ol>
+        ) : null}
       </aside>
       <main className="Main"></main>
     </>
