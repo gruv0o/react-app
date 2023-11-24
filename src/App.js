@@ -41,7 +41,7 @@ function App() {
           {notes !== null ? (
             <ol className="Notes-list">
               {notes.map((note) => (
-                <li>
+                <li key={note.id}>
                   <Link className="Note-link" to={`/notes/${note.id}`}>
                     {note.title}
                   </Link>
