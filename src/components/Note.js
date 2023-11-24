@@ -8,7 +8,7 @@ const { id } = useParams();
 const [note, setNote] = useState(null);
 
 async function fetchNote(){
-  const response = await fetch(`/notes/${id}` ); // Alt + 96 pour `
+  const response = await fetch(`/notes/${id}`); // Alt + 96 pour `
   const data = await response.json();
   setNote(data);
 }
