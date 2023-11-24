@@ -1,5 +1,9 @@
+import { useParams } from "react-router-dom";
+
 function Note() {
-  return "Ma note";
+  const { id } = useParams();
+
+  return id;
 }
 
 export default Note;
