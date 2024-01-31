@@ -8,6 +8,8 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: rgb(29, 35, 39);
+  max-height: 100%;
+  overflow-y: auto;
 }
 
 .Loading {
@@ -30,6 +32,10 @@
 }
 
 .Note-link {
+  margin: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -37,6 +43,11 @@
   color: inherit;
   text-decoration: inherit;
   font-weight: bold;
+  background-color: rgb(34,40,44 );
+}
+
+.Note-link:hover{
+  background-color: rgb(49, 55, 59);
 }
 
 .Note-link.active {
@@ -59,14 +70,59 @@
 }
 
 .Button-create-note {
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
+  padding: 12px;
+  margin-top: 15px;
+  margin-left: 15px;
+  font-size: 18px;
   background-color: rgb(44, 51, 56);
+  font-weight: bold;
 }
 
 .Temperature {
   padding: 8px;
   font-size: 10px;
   color: darkgrey;
+}
+
+.delete-button {
+  height: 40px;
+  width: 90px;
+  background-color: rgb(29, 35, 39);
+  color: red;
+  border: 12px;
+  border-color: red;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  align-items: center;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+  color: white;
+}
+
+.search-input {
+  width: 220px;
+  margin: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  color: inherit;
+  text-decoration: inherit;
+  font-weight: bold;
+  background-color: rgb(34,40,44 );
+}
+
+.saved-label {
+  margin-left: 10px;
+  color: green;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 12px;
 }

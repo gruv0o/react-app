@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import { ConfirmationModal } from "./Modal";
 import "./Note.css";
 
 function Note({ onSaveSuccess }) {
 const { id } = useParams();
 const [note, setNote] = useState(null);
+const [showConfirmation, setShowConfirmation] = useState(false);
 
 async function fetchNote(){
   const response = await fetch(`/notes/${id}`); // Alt + 96 pour `
@@ -15,11 +16,18 @@ async function fetchNote(){
 
 async function saveNote(){
   const response = await fetch(`/notes/${id}`, {
-    method: "PUT",
+    method: "PUT", 
     body: JSON.stringify(note),
     headers: {"Content-Type":"application/json" },
   });
+  if(response.ok){
+    if(onSaveSuccess){
   onSaveSuccess();
+  setShowConfirmation(true);
+    }
+  }else{
+    console.log("Erreur lors de la mise a jour des notes")
+  }
 }
 
 useEffect(() =>{
@@ -51,7 +59,12 @@ if(!note){
       />
       <div className="Note-actions">
         <button className="Button">Enregistrer</button>
-      </div>  
+      </div> 
+      <ConfirmationModal 
+      isOpen={showConfirmation}
+      onClose={() => setShowConfirmation(false)}
+      message="Modifications sauvegardées"
+      /> 
     </form>
   );
 }

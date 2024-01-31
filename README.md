@@ -1,3 +1,15 @@
+FONCTIONNALITEES:
+
++ création de note
++ affichage du contenu
++ sauvegarde des modif
++ liste des note avec scrolling 
++ tri par date de création
++ redaction de la note avant la sauvegarde
+- suppression des notes
+- barre de recherche de contenu/titre
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
